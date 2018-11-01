@@ -9,7 +9,7 @@ defmodule Web.Mixfile do
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.7",
+      elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -38,10 +38,10 @@ defmodule Web.Mixfile do
     [
       {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
-      {:phoenix, "~> 1.3"},
-      {:phoenix_pubsub, "~> 1.0"},
+      {:phoenix, "~> 1.3.4"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_pubsub, "~> 1.0"},
       {:plug_cowboy, "~> 1.0"}
     ]
   end

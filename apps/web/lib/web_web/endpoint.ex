@@ -35,7 +35,7 @@ defmodule WebWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_web_key",
-    signing_salt: "io4g+Kad"
+    signing_salt: "tTiCoql3"
 
   plug WebWeb.Router
 
