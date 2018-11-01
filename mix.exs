@@ -6,6 +6,9 @@ defmodule Servant.MixProject do
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
       elixir: "~> 1.7",
+      build_embedded: Mix.env() in [:prod, :staging],
+      start_permanent: Mix.env() in [:prod, :staging],
+      aliases: aliases(),
       deps: deps()
     ]
   end
@@ -17,7 +20,15 @@ defmodule Servant.MixProject do
   # Run "mix help deps" for examples and options.
   defp deps do
     [
-      {:distillery, "~> 2.0", runtime: false}
+      {:credo, "~> 0.10", only: [:dev, :test], runtime: false}
+    ]
+  end
+
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run apps/data/priv/repo/seeds.exs"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      test: ["compile --warnings-as-errors", "ecto.reset", "test", "credo -a --strict"]
     ]
   end
 end
