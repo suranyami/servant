@@ -12,7 +12,7 @@ config :web,
 # Configures the endpoint
 config :web, WebWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "oUfcdI04vkMLglubQq3gsEjWe5EheYAwtwbI4jpHmv9AwriFCWsL6ZfAKgo6Rb9G",
+  secret_key_base: "w3kv5RuKWRkH5Gohh1L4VkASQ3u81bGGustNzvRpREESmlWT3LS+01C+F6ytg1vs",
   render_errors: [view: WebWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Web.PubSub,
            adapter: Phoenix.PubSub.PG2]

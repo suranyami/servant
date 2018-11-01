@@ -36,8 +36,8 @@ defmodule Web.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
+      {:cowboy, "~> 1.0"},
       {:phoenix, "~> 1.3.4"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
