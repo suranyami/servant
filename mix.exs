@@ -5,6 +5,7 @@ defmodule Servant.MixProject do
     [
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
+      elixir: "~> 1.7",
       deps: deps()
     ]
   end
