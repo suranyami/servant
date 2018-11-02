@@ -3,7 +3,7 @@ defmodule Data.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add(:email, :string, null: false, index: true)
+      add(:email, :string, null: false)
       add(:encrypted_password, :string)
       add(:first_name, :string)
       add(:last_name, :string)
