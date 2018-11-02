@@ -36,6 +36,9 @@ defmodule Web.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:absinthe, "~> 1.4"},
+      {:absinthe_phoenix, "~> 1.4"},
+      {:absinthe_plug, "~> 1.4"},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:phoenix, "~> 1.3.4"},
