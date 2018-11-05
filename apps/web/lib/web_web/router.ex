@@ -14,7 +14,6 @@ defmodule WebWeb.Router do
   end
 
   scope "/", WebWeb do
-    # Use the default browser stack
     pipe_through(:browser)
 
     get("/", PageController, :index)
