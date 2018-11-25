@@ -39,13 +39,16 @@ defmodule Web.Mixfile do
       {:absinthe, "~> 1.4"},
       {:absinthe_phoenix, "~> 1.4"},
       {:absinthe_plug, "~> 1.4"},
+      {:bcrypt_elixir, "~> 1.1"},
+      {:comeonin, "~> 4.1"},
+      {:cowboy, "~> 2.6"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"},
-      {:phoenix, "~> 1.3.4"},
-      {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:plug_cowboy, "~> 1.0"}
+      {:guardian, "~> 1.1"},
+      {:phoenix, "~> 1.4"},
+      {:phoenix_html, "~> 2.12"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:plug_cowboy, "~> 2.0"}
     ]
   end
 end
