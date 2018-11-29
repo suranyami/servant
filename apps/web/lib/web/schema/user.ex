@@ -1,4 +1,4 @@
-defmodule WebWeb.Schema.User do
+defmodule Web.Schema.User do
   @moduledoc """
     Represents a user account.
   """

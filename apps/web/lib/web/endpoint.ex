@@ -1,8 +1,12 @@
-defmodule WebWeb.Endpoint do
+defmodule Web.Endpoint do
   use Phoenix.Endpoint, otp_app: :web
   use Absinthe.Phoenix.Endpoint
 
-  socket("/socket", WebWeb.UserSocket)
+  socket(
+    "/socket",
+    Web.UserSocket,
+    websocket: true
+  )
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -43,7 +47,7 @@ defmodule WebWeb.Endpoint do
     signing_salt: "B4dORD9E"
   )
 
-  plug(WebWeb.Router)
+  plug(Web.Router)
 
   @doc """
   Callback invoked for dynamically configuring the endpoint.

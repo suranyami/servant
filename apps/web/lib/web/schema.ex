@@ -1,8 +1,8 @@
-defmodule WebWeb.Schema do
+defmodule Web.Schema do
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
-  import_types(WebWeb.Schema.User)
-  alias WebWeb.Resolvers
+  import_types(Web.Schema.User)
+  alias Web.Resolvers
 
   query do
     @desc "Get a user"
