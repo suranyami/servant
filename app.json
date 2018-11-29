@@ -1,0 +1,18 @@
+{
+  "buildpacks": [
+    {"url": "https://github.com/HashNuke/heroku-buildpack-elixir.git"}
+  ],
+  "environments": {
+    "test": {
+      "addons": ["heroku-postgresql:in-dyno"],
+      "env": {
+        "GUARDIAN_SECRET_KEY": "GUARDIAN_TEST_KEY",
+        "MIX_ENV":             "test",
+        "SECRET_KEY":          "TEST_KEY"
+      },
+      "scripts": {
+        "test": "mix format --check-formatted && mix test"
+      }
+    }
+  }
+}

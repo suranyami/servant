@@ -10,11 +10,12 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-1..100
+1..10
 |> Enum.each(fn _ ->
   email = Faker.Internet.email()
   first_name = Faker.Name.first_name()
   last_name = Faker.Name.last_name()
   password = Faker.String.base64(12)
   Data.Users.create(email, first_name, last_name, password)
+  IO.puts("#{email} created")
 end)

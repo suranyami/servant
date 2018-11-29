@@ -1,14 +1,11 @@
-defmodule WebWeb.UserSocket do
+defmodule Web.UserSocket do
   use Phoenix.Socket
 
   use Absinthe.Phoenix.Socket,
-    schema: WebWeb.Schema
+    schema: Web.Schema
 
   ## Channels
-  # channel "room:*", WebWeb.RoomChannel
-
-  ## Transports
-  transport(:websocket, Phoenix.Transports.WebSocket, timeout: 45_000)
+  # channel "room:*", Web.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
@@ -32,7 +29,7 @@ defmodule WebWeb.UserSocket do
   # Would allow you to broadcast a "disconnect" event and terminate
   # all active sockets and channels for a given user:
   #
-  #     WebWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
+  #     Web.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
   def id(_socket), do: nil
