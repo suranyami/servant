@@ -1,5 +1,6 @@
 defmodule Web.Router do
   use Web, :router
+  alias Web.AuthPipeline
 
   pipeline :browser do
     plug(:accepts, ["html"])
@@ -13,10 +14,20 @@ defmodule Web.Router do
     plug(:accepts, ["json"])
   end
 
+  pipeline :jwt_authenticated do
+    plug(AuthPipeline)
+  end
+
   scope "/api", Web do
     pipe_through(:api)
     post("/sign_up", UserController, :create)
     post("/sign_in", UserController, :sign_in)
+  end
+
+  scope "/api", Web do
+    pipe_through([:api, :jwt_authenticated])
+
+    get("/my_user", UserController, :show)
   end
 
   scope "/", Web do
