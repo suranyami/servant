@@ -16,7 +16,7 @@ use Mix.Config
 config :web, Web.Endpoint,
   load_from_system_env: true,
   url: [scheme: "https", host: "klub-servant.herokuapp.com", port: 443],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
+  secret_key_base: System.get_env("SECRET_KEY"),
   force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 config :logger, level: :info
