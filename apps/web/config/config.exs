@@ -14,14 +14,21 @@ config :web, WebWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "w3kv5RuKWRkH5Gohh1L4VkASQ3u81bGGustNzvRpREESmlWT3LS+01C+F6ytg1vs",
   render_errors: [view: WebWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Web.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [
+    name: Web.PubSub,
+    adapter: Phoenix.PubSub.PG2
+  ]
 
-# Configures Elixir's Logger
+config :web, WebWeb.Guardian,
+  issuer: "klub",
+  secret_key: "g2ZqgWNZ0Gv+2BK47VZq7aEZAZGMRIV2SY1h2yNFbqGTxFGEkr+TeFKGQUiknjas"
+
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+config :phoenix, :json_library, Jason
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

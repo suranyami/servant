@@ -13,6 +13,11 @@ defmodule WebWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  scope "/api", WebWeb do
+    pipe_through(:api)
+    resources("/users", UserController, only: [:create, :show])
+  end
+
   scope "/", WebWeb do
     # Use the default browser stack
     pipe_through(:browser)
@@ -33,9 +38,4 @@ defmodule WebWeb.Router do
     socket: WebWeb.UserSocket,
     interface: :playground
   )
-
-  # Other scopes may use custom stacks.
-  # scope "/api", WebWeb do
-  #   pipe_through :api
-  # end
 end

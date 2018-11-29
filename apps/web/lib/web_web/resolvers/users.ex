@@ -3,10 +3,7 @@ defmodule WebWeb.Resolvers.Users do
     Queries for user.
   """
   def find(_parent, %{id: id}, _resolution) do
-    case Data.Users.find(id) do
-      nil -> {:error, "User ID #{id} not found"}
-      user -> {:ok, user}
-    end
+    Data.Users.get!(id)
   end
 
   def create(
