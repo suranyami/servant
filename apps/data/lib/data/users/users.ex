@@ -47,7 +47,7 @@ defmodule Data.Users do
     Repo.delete(user)
   end
 
-  def list() do
+  def list do
     Repo.all(User)
   end
 end

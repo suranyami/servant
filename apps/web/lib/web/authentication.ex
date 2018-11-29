@@ -1,4 +1,8 @@
 defmodule Web.Authentication do
+  @moduledoc """
+  Allows signing in with email and password, adding the user as a resources
+  in the conn and session and providing a token.
+  """
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
   alias Data.{User, Users}
   alias Web.Guardian

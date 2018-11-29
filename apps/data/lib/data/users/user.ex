@@ -1,4 +1,7 @@
 defmodule Data.User do
+  @moduledoc """
+  User schema definition and changeset rules.
+  """
   use Ecto.Schema
   import Ecto.Changeset
   import Comeonin.Bcrypt, only: [hashpwsalt: 1]
@@ -20,7 +23,7 @@ defmodule Data.User do
 
   def changeset(%Data.User{} = user, params \\ :empty) do
     user
-    |> Ecto.Changeset.change()
+    |> change()
     |> cast(params, @required)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 8)

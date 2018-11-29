@@ -1,4 +1,7 @@
 defmodule Web.AuthPipeline do
+  @moduledoc """
+  Add this to a scope to require authentication.
+  """
   use Guardian.Plug.Pipeline,
     otp_app: :web,
     module: Web.Guardian,

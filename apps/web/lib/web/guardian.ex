@@ -1,4 +1,7 @@
 defmodule Web.Guardian do
+  @moduledoc """
+  Manages subjects and resources for tokens.
+  """
   use Guardian, otp_app: :web
   alias Data.Users
 
