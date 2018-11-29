@@ -12,13 +12,11 @@ defmodule Web.Guardian do
     {:ok, sub}
   end
 
-  def subject_for_token(_, _) do
-    {:error, :reason_for_error}
-  end
+  # def subject_for_token(_, _) do
+  #   {:error, :reason_for_error}
+  # end
 
   def resource_from_claims(%{"sub" => id}) do
-    require IEx
-    IEx.pry()
     resource = Users.get!(id)
     {:ok, resource}
   end

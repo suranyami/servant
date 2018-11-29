@@ -12,7 +12,7 @@ config :web,
 # Configures the endpoint
 config :web, Web.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "w3kv5RuKWRkH5Gohh1L4VkASQ3u81bGGustNzvRpREESmlWT3LS+01C+F6ytg1vs",
+  secret_key_base: System.get_env("SECRET_KEY"),
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
   pubsub: [
     name: Web.PubSub,
@@ -21,7 +21,7 @@ config :web, Web.Endpoint,
 
 config :web, Web.Guardian,
   issuer: "web",
-  secret_key: "g2ZqgWNZ0Gv+2BK47VZq7aEZAZGMRIV2SY1h2yNFbqGTxFGEkr+TeFKGQUiknjas"
+  secret_key: System.get_env("SECRET_KEY")
 
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

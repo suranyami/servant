@@ -2,9 +2,20 @@ defmodule Web.UserController do
   use Web, :controller
 
   alias Data.{User, Users}
-  alias Web.Guardian
+  alias Web.{Authentication, Guardian}
 
   action_fallback(Web.FallbackController)
+
+  def sign_in(conn, %{"email" => email, "password" => password}) do
+    case Authentication.token_sign_in(email, password) do
+      {:ok, token, _claims} ->
+        conn
+        |> render("jwt.json", jwt: token)
+
+      _ ->
+        {:error, :unauthorized}
+    end
+  end
 
   def index(conn, _params) do
     users = Users.list()
