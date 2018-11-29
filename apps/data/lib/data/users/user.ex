@@ -16,7 +16,7 @@ defmodule Data.User do
   end
 
   @required ~w(email password password_confirmation)
-  @optional [:first_name, :last_name]
+  # @optional ~w(first_name last_name)
 
   def changeset(%Data.User{} = user, params \\ :empty) do
     user
@@ -30,7 +30,7 @@ defmodule Data.User do
   end
 
   defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: pass}} = changeset) do
-    put_change(changeset, :password_hash, hashpwsalt(pass))
+    put_change(changeset, :encrypted_password, hashpwsalt(pass))
   end
 
   defp put_password_hash(changeset), do: changeset
