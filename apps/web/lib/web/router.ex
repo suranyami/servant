@@ -1,5 +1,5 @@
-defmodule WebWeb.Router do
-  use WebWeb, :router
+defmodule Web.Router do
+  use Web, :router
 
   pipeline :browser do
     plug(:accepts, ["html"])
@@ -13,12 +13,12 @@ defmodule WebWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/api", WebWeb do
+  scope "/api", Web do
     pipe_through(:api)
-    resources("/users", UserController, only: [:create, :show])
+    post("/sign_up", UserController, :create)
   end
 
-  scope "/", WebWeb do
+  scope "/", Web do
     # Use the default browser stack
     pipe_through(:browser)
 
@@ -28,14 +28,14 @@ defmodule WebWeb.Router do
   forward(
     "/graphql",
     Absinthe.Plug,
-    schema: WebWeb.Schema
+    schema: Web.Schema
   )
 
   forward(
     "/graphiql",
     Absinthe.Plug.GraphiQL,
-    schema: WebWeb.Schema,
-    socket: WebWeb.UserSocket,
+    schema: Web.Schema,
+    socket: Web.UserSocket,
     interface: :playground
   )
 end

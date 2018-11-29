@@ -10,17 +10,17 @@ config :web,
   namespace: Web
 
 # Configures the endpoint
-config :web, WebWeb.Endpoint,
+config :web, Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "w3kv5RuKWRkH5Gohh1L4VkASQ3u81bGGustNzvRpREESmlWT3LS+01C+F6ytg1vs",
-  render_errors: [view: WebWeb.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
   pubsub: [
     name: Web.PubSub,
     adapter: Phoenix.PubSub.PG2
   ]
 
-config :web, WebWeb.Guardian,
-  issuer: "klub",
+config :web, Web.Guardian,
+  issuer: "web",
   secret_key: "g2ZqgWNZ0Gv+2BK47VZq7aEZAZGMRIV2SY1h2yNFbqGTxFGEkr+TeFKGQUiknjas"
 
 config :logger, :console,

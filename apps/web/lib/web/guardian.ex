@@ -1,5 +1,5 @@
-defmodule WebWeb.Guardian do
-  use Guardian, otp_app: :web_web
+defmodule Web.Guardian do
+  use Guardian, otp_app: :web
   alias Data.Users
 
   def subject_for_token(resource, _claims) do
@@ -17,7 +17,10 @@ defmodule WebWeb.Guardian do
   end
 
   def resource_from_claims(%{"sub" => id}) do
-    Users.get!(id)
+    require IEx
+    IEx.pry()
+    resource = Users.get!(id)
+    {:ok, resource}
   end
 
   def resource_from_claims(_claims) do

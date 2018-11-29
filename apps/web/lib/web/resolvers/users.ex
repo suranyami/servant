@@ -1,4 +1,4 @@
-defmodule WebWeb.Resolvers.Users do
+defmodule Web.Resolvers.Users do
   @moduledoc """
     Queries for user.
   """
