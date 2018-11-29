@@ -20,7 +20,7 @@ config :web, Web.Endpoint,
   ]
 
 config :web, Web.Guardian,
-  issuer: "web",
+  issuer: "klub",
   secret_key: System.get_env("SECRET_KEY")
 
 config :logger, :console,
