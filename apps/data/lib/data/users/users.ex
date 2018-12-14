@@ -14,13 +14,10 @@ defmodule Data.Users do
     |> Repo.insert()
   end
 
-  def create(email, first_name, last_name, password) do
+  def create(email, password) do
     %{
       email: email,
-      first_name: first_name,
-      last_name: last_name,
-      password: password,
-      password_confirmation: password
+      password: password
     }
     |> create()
   end
