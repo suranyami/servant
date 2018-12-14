@@ -5,6 +5,7 @@ defmodule Web.Schema do
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
   import_types(Web.Schema.User)
+  import_types(Web.Schema.Session)
   alias Web.Resolvers.Users
 
   query do
@@ -21,12 +22,25 @@ defmodule Web.Schema do
   end
 
   mutation do
-    field :create_user, :user do
+    field :login, type: :session do
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
+      resolve(&Users.login/3)
+    end
+
+    field :create_user, type: :user do
       arg(:email, :string)
-      arg(:first_name, :string)
-      arg(:last_name, :string)
+      arg(:password, :string)
 
       resolve(&Users.create/3)
     end
+
+    field :update_user, type: :user do
+      arg :id, non_null(:integer)
+      arg :user, :update_user_params
+
+      resolve(&Users.update/3)
+    end
   end
+
 end

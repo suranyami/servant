@@ -7,7 +7,8 @@ defmodule Web.AuthPipeline do
     module: Web.Guardian,
     error_handler: Web.AuthErrorHandler
 
-  plug(Guardian.Plug.VerifyHeader, realm: "Bearer")
-  plug(Guardian.Plug.EnsureAuthenticated)
-  plug(Guardian.Plug.LoadResource)
+  plug Guardian.Plug.VerifyHeader, realm: "Bearer"
+  plug Guardian.Plug.EnsureAuthenticated
+  plug Guardian.Plug.LoadResource, allow_blank: true
+  plug Web.AuthContext
 end

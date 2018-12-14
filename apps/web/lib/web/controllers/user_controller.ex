@@ -3,16 +3,15 @@ defmodule Web.UserController do
 
   alias Data.{User, Users}
   alias Guardian.Plug
-  alias Web.{Authentication, Guardian}
+  alias Web.{Guardian, Session}
 
   action_fallback(Web.FallbackController)
 
   def sign_in(conn, %{"email" => email, "password" => password}) do
-    case Authentication.token_sign_in(email, password) do
-      {:ok, token, _claims} ->
+    with {:ok, %{token: jwt}} <- Session.login(email, password) do
         conn
-        |> render("jwt.json", jwt: token)
-
+        |> render("jwt.json", jwt: jwt)
+    else
       _ ->
         {:error, :unauthorized}
     end
