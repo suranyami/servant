@@ -16,6 +16,6 @@
   first_name = Faker.Name.first_name()
   last_name = Faker.Name.last_name()
   password = Faker.String.base64(12)
-  Data.Users.create(email, first_name, last_name, password)
+  Data.Users.create(email, password)
   IO.puts("#{email} created")
 end)
