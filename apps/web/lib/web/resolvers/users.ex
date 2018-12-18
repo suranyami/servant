@@ -14,8 +14,18 @@ defmodule Web.Resolvers.Users do
     Users.get!(id)
   end
 
-  def create(_parent, %{email: email, password: password}, _resolution) do
-    Users.create(email, password)
+  def create(_parent,
+    %{
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password
+    },
+    _resolution) do
+    Users.create(first_name, last_name, email, password)
+    # TODO: Test that user was actually created
+    result = Session.login(email, password)
+    result
   end
 
   def update(_parent, %{id: id, user: user_params}, _info) do

@@ -28,9 +28,11 @@ defmodule Web.Schema do
       resolve(&Users.login/3)
     end
 
-    field :create_user, type: :user do
-      arg(:email, :string)
-      arg(:password, :string)
+    field :create_user, type: :session do
+      arg(:first_name, :string)
+      arg(:last_name, :string)
+      arg(:email, non_null(:string))
+      arg(:password, non_null(:string))
 
       resolve(&Users.create/3)
     end
