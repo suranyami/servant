@@ -49,6 +49,7 @@ defmodule Web.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 1.1"},
       {:plug, "~> 1.7"},
+      {:corsica, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end
