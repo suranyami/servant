@@ -4,7 +4,6 @@ defmodule Web.CORS do
   """
   use Corsica.Router,
     origins: [
-      # "*"
       "http://localhost:8080",
       "http://localhost:8080/?",
       # "http://localhost",
@@ -13,7 +12,7 @@ defmodule Web.CORS do
     ],
     allow_credentials: true,
     max_age: 600,
-    allow_headers: ["content-type", "accept"],
+    allow_headers: ["authorization", "content-type", "accept"],
     allow_methods: :all,
     log: [rejected: :debug, accepted: :debug, invalid: :debug]
 
