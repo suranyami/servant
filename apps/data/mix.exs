@@ -39,9 +39,12 @@ defmodule Data.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:ecto, "~> 2.1"},
+      {:ecto, "~> 3.0"},
+      {:ecto_sql, "~> 3.0"},
       {:faker, "~> 0.11"},
-      {:postgrex, ">= 0.0.0"}
+      {:phoenix_ecto, "~> 4.0"},
+      {:postgrex, "~> 0.14"},
+      {:scrivener_ecto, "~> 2.0"}
     ]
   end
 
