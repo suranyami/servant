@@ -1,8 +1,7 @@
 defmodule Web.UserSocket do
   use Phoenix.Socket
 
-  use Absinthe.Phoenix.Socket,
-    schema: Web.Schema
+  use Absinthe.Phoenix.Socket, schema: Web.Schema
 
   ## Channels
   # channel "room:*", Web.RoomChannel
