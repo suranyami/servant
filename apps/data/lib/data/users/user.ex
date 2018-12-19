@@ -19,12 +19,12 @@ defmodule Data.User do
   end
 
   @required ~w(email password password_confirmation)
-  # @optional ~w(first_name last_name)
+  @optional ~w(first_name last_name)
 
   def changeset(%Data.User{} = user, params \\ :empty) do
     user
     |> change()
-    |> cast(params, @required)
+    |> cast(params, @required ++ @optional)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 8)
     |> validate_confirmation(:password)

@@ -34,11 +34,27 @@ defmodule Web.Resolvers.Users do
     |> Data.Users.update(user_params)
   end
 
+  def list(_parent, %{
+    page: page,
+    page_size: page_size,
+    sort_by: sort_by,
+    sort_order: sort_order
+  } = params, %{context: %{current_user: _}}) do
+    updated =
+      params
+      |> Map.replace!(:sort_by, underscore(params[:sort_by]))
+    {:ok, Users.list(updated)}
+  end
+
   def list(_parent, _, %{context: %{current_user: _}}) do
     {:ok, Users.list()}
   end
 
   def list(_parent, _, _) do
     {:error, "Not Authorized"}
+  end
+
+  defp underscore(str) do
+    Macro.underscore(str)
   end
 end

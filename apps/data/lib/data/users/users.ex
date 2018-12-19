@@ -3,6 +3,7 @@ defmodule Data.Users do
   Data context for manipulating users.
   """
   alias Data.{Repo, User}
+  import Ecto.Query, only: [from: 2]
 
   def get_by_email(email) do
     Repo.get_by(User, email: email)
@@ -44,6 +45,22 @@ defmodule Data.Users do
 
   def delete(%User{} = user) do
     Repo.delete(user)
+  end
+
+  def list(%{
+    page: _page,
+    page_size: _page_size,
+    sort_by: sort_by,
+    sort_order: sort_order
+  } = params) do
+    order_def =
+      if sort_order == "desc" do
+        [desc: String.to_atom(sort_by)]
+      else
+        [asc: String.to_atom(sort_by)]
+      end
+    from(u in User, order_by: ^order_def)
+    |> Repo.paginate(params)
   end
 
   def list do

@@ -4,8 +4,9 @@ defmodule Web.Schema do
   """
   use Absinthe.Schema
   import_types(Absinthe.Type.Custom)
-  import_types(Web.Schema.User)
+  import_types(Web.Schema.Page)
   import_types(Web.Schema.Session)
+  import_types(Web.Schema.User)
   alias Web.Resolvers.Users
 
   query do
@@ -19,6 +20,17 @@ defmodule Web.Schema do
     field :users, list_of(:user) do
       resolve(&Users.list/3)
     end
+
+    @desc "Get all users, paginated"
+    field :users_page, :page do
+      arg(:page, non_null(:integer))
+      arg(:page_size, non_null(:integer))
+      arg(:sort_by, non_null(:string))
+      arg(:sort_order, non_null(:string))
+
+      resolve(&Users.list/3)
+    end
+
   end
 
   mutation do
