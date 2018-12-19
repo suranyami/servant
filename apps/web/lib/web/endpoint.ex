@@ -47,7 +47,6 @@ defmodule Web.Endpoint do
     signing_salt: "B4dORD9E"
   )
 
-
   plug Web.CORS
 
   plug(Web.Router)
