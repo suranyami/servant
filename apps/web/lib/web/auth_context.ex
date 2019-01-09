@@ -4,8 +4,8 @@ defmodule Web.AuthContext do
   set it on the conn.
   """
   @behaviour Plug
-  alias Guardian.Plug
   import Plug.Conn
+  alias Guardian.Plug
 
   def init(opts) do
      opts
