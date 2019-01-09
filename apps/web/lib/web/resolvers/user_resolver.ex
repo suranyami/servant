@@ -1,4 +1,4 @@
-defmodule Web.Resolvers.Users do
+defmodule Web.Resolvers.UserResolver do
   @moduledoc """
     Queries for user.
   """
@@ -35,10 +35,10 @@ defmodule Web.Resolvers.Users do
   end
 
   def list(_parent, %{
-    page: page,
-    page_size: page_size,
-    sort_by: sort_by,
-    sort_order: sort_order
+    page: _,
+    page_size: _,
+    sort_by: _,
+    sort_order: _
   } = params, %{context: %{current_user: _}}) do
     updated =
       params

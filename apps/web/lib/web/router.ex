@@ -39,7 +39,6 @@ defmodule Web.Router do
       socket: Web.UserSocket
   end
 
-
   scope "/", Web do
     pipe_through(:browser)
 

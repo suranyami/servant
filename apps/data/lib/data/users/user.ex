@@ -18,8 +18,8 @@ defmodule Data.User do
     timestamps()
   end
 
-  @required ~w(email password password_confirmation)
-  @optional ~w(first_name last_name)
+  @required ~w(email password password_confirmation)a
+  @optional ~w(first_name last_name)a
 
   def changeset(%Data.User{} = user, params \\ :empty) do
     user

@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-1..100
+1..10
 |> Enum.each(fn _ ->
   email = Faker.Internet.email()
   first_name = Faker.Name.first_name()

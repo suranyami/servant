@@ -41,6 +41,7 @@ defmodule Web.Mixfile do
       {:absinthe_plug, "~> 1.4"},
       {:bcrypt_elixir, "~> 1.1"},
       {:comeonin, "~> 4.1"},
+      {:data, in_umbrella: true},
       {:gettext, "~> 0.11"},
       {:guardian, "~> 1.1"},
       {:jason, "~> 1.0"},

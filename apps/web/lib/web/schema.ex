@@ -7,18 +7,18 @@ defmodule Web.Schema do
   import_types(Web.Schema.Page)
   import_types(Web.Schema.Session)
   import_types(Web.Schema.User)
-  alias Web.Resolvers.Users
+  alias Web.Resolvers.UserResolver
 
   query do
     @desc "Get a user"
     field :user, :user do
       arg(:id, non_null(:id))
-      resolve(&Users.find/3)
+      resolve(&UserResolver.find/3)
     end
 
     @desc "Get all users"
     field :users, list_of(:user) do
-      resolve(&Users.list/3)
+      resolve(&UserResolver.list/3)
     end
 
     @desc "Get all users, paginated"
@@ -28,7 +28,7 @@ defmodule Web.Schema do
       arg(:sort_by, non_null(:string))
       arg(:sort_order, non_null(:string))
 
-      resolve(&Users.list/3)
+      resolve(&UserResolver.list/3)
     end
 
   end
@@ -37,7 +37,7 @@ defmodule Web.Schema do
     field :login, type: :session do
       arg(:email, non_null(:string))
       arg(:password, non_null(:string))
-      resolve(&Users.login/3)
+      resolve(&UserResolver.login/3)
     end
 
     field :create_user, type: :session do
@@ -46,14 +46,14 @@ defmodule Web.Schema do
       arg(:email, non_null(:string))
       arg(:password, non_null(:string))
 
-      resolve(&Users.create/3)
+      resolve(&UserResolver.create/3)
     end
 
     field :update_user, type: :user do
       arg :id, non_null(:integer)
       arg :user, :update_user_params
 
-      resolve(&Users.update/3)
+      resolve(&UserResolver.update/3)
     end
   end
 
