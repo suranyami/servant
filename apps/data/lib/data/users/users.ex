@@ -47,18 +47,21 @@ defmodule Data.Users do
     Repo.delete(user)
   end
 
-  def list(%{
-    page: _page,
-    page_size: _page_size,
-    sort_by: sort_by,
-    sort_order: sort_order
-  } = params) do
+  def list(
+        %{
+          page: _page,
+          page_size: _page_size,
+          sort_by: sort_by,
+          sort_order: sort_order
+        } = params
+      ) do
     order_def =
       if sort_order == "desc" do
         [desc: String.to_atom(sort_by)]
       else
         [asc: String.to_atom(sort_by)]
       end
+
     from(u in User, order_by: ^order_def)
     |> Repo.paginate(params)
   end
