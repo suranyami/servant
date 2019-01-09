@@ -30,8 +30,8 @@ defmodule Web.Resolvers.UserResolver do
 
   def update(_parent, %{id: id, user: user_params}, _info) do
     id
-    |> Data.Users.get!()
-    |> Data.Users.update(user_params)
+    |> Users.get!()
+    |> Users.update(user_params)
   end
 
   def list(_parent, %{

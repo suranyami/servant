@@ -5,7 +5,8 @@ defmodule Web.Endpoint do
   socket(
     "/socket",
     Web.UserSocket,
-    websocket: true
+    websocket: true,
+    longpoll: false
   )
 
   # Serve at "/" the static files from "priv/static" directory.

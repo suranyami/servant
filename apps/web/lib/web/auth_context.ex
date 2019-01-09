@@ -4,6 +4,7 @@ defmodule Web.AuthContext do
   set it on the conn.
   """
   @behaviour Plug
+  alias Guardian.Plug
   import Plug.Conn
 
   def init(opts) do
@@ -12,7 +13,7 @@ defmodule Web.AuthContext do
 
   def call(conn, _) do
     conn
-    |> Guardian.Plug.current_resource()
+    |> Plug.current_resource()
     |> set_user(conn)
   end
 

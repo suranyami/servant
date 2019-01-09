@@ -2,7 +2,9 @@ defmodule Web.Session do
   @moduledoc """
   Finds users and checks passwords.
   """
+  alias Comeonin.Bcrypt
   alias Data.Users
+  alias Web.Guardian
 
   def login(email, password) do
     with {:ok, user} <- authenticate(email, password),
@@ -12,7 +14,7 @@ defmodule Web.Session do
   end
 
   defp sign(user) do
-    Web.Guardian.encode_and_sign(user)
+    Guardian.encode_and_sign(user)
   end
 
   defp authenticate(email, password) do
@@ -24,12 +26,12 @@ defmodule Web.Session do
 
   defp check_password(nil, _) do
     # This prevents timing attacks
-    Comeonin.Bcrypt.dummy_checkpw()
+    Bcrypt.dummy_checkpw()
     wrong_credentials()
   end
 
   defp check_password(user, password) do
-    if Comeonin.Bcrypt.checkpw(password, user.encrypted_password) do
+    if Bcrypt.checkpw(password, user.encrypted_password) do
       {:ok, user}
     else
       wrong_credentials()
