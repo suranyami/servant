@@ -6,8 +6,8 @@ defmodule Web.CORS do
     origins: [
       "http://localhost:8080",
       "http://localhost:8080/?",
-      # "http://localhost",
-      # "http://localhost:4000",
+      "http://klub.netlify.com",
+      ~r{^https?://(.*\.?)klub.netlify\.com$}
       # ~r{^https?://(.*\.?)example\.com$}
     ],
     allow_credentials: true,
