@@ -28,3 +28,5 @@ direnv allow .
 
 This will load the environment variables like `SECRET_KEY` and make them
 available to the server.
+
+## Updated githooks
