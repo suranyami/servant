@@ -11,7 +11,7 @@ defmodule Web.Resolvers.UserResolver do
   end
 
   def find(_parent, %{id: id}, _resolution) do
-    Users.get!(id)
+    Users.get(id)
   end
 
   def create(_parent,
@@ -22,15 +22,22 @@ defmodule Web.Resolvers.UserResolver do
       password: password
     },
     _resolution) do
-    Users.create(first_name, last_name, email, password)
-    # TODO: Test that user was actually created
-    result = Session.login(email, password)
-    result
+
+    res = Users.create(first_name, last_name, email, password)
+
+    with {:ok, _user} <- res
+    do
+      Session.login(email, password)
+    else
+      # TODO: Need to parse the errors, because they have tuples: JSON won't like it.
+      {:error, reasons = []} -> {:error, "Lots of reasons"}
+      {:error, reason} -> {:error, reason}
+    end
   end
 
   def update(_parent, %{id: id, user: user_params}, _info) do
     id
-    |> Users.get!()
+    |> Users.get()
     |> Users.update(user_params)
   end
 
