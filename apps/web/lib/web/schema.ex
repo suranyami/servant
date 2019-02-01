@@ -30,7 +30,6 @@ defmodule Web.Schema do
 
       resolve(&UserResolver.list/3)
     end
-
   end
 
   mutation do
