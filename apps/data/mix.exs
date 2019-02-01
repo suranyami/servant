@@ -1,4 +1,7 @@
 defmodule Data.Mixfile do
+  @moduledoc """
+  Data model and database operations.
+  """
   use Mix.Project
 
   def project do

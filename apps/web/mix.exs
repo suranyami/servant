@@ -41,6 +41,7 @@ defmodule Web.Mixfile do
       {:absinthe_plug, "~> 1.4"},
       {:bcrypt_elixir, "~> 1.1"},
       {:comeonin, "~> 4.1"},
+      {:corsica, "~> 1.1"},
       {:data, in_umbrella: true},
       {:gettext, "~> 0.11"},
       {:guardian, "~> 1.1"},
@@ -50,7 +51,6 @@ defmodule Web.Mixfile do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_pubsub, "~> 1.1"},
       {:plug, "~> 1.7"},
-      {:corsica, "~> 1.1"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end
