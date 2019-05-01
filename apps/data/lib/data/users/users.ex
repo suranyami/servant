@@ -71,8 +71,8 @@ defmodule Data.Users do
         [asc: String.to_atom(sort_by)]
       end
 
-    query = from(u in User, order_by: ^order_def)
-    Repo.paginate(query, params)
+    from(u in User, order_by: ^order_def)
+    |> Repo.paginate(params)
   end
 
   def list do

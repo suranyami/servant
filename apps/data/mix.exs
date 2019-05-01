@@ -44,6 +44,7 @@ defmodule Data.Mixfile do
     [
       {:ecto, "~> 3.0"},
       {:ecto_sql, "~> 3.0"},
+      {:ex_machina, "~> 2.3"},
       {:faker, "~> 0.11"},
       {:phoenix_ecto, "~> 4.0"},
       {:postgrex, "~> 0.14"},
