@@ -42,6 +42,8 @@ defmodule Data.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 1.1"},
+      {:comeonin, "~> 4.1"},
       {:ecto, "~> 3.0"},
       {:ecto_sql, "~> 3.0"},
       {:faker, "~> 0.11"},
