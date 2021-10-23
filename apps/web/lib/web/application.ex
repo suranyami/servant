@@ -10,7 +10,8 @@ defmodule Web.Application do
 
     children = [
       supervisor(Endpoint, []),
-      supervisor(Absinthe.Subscription, [Endpoint])
+      supervisor(Absinthe.Subscription, [Endpoint]),
+      {Phoenix.PubSub, [name: Web.PubSub, adapter: Phoenix.PubSub.PG2]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

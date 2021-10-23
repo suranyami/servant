@@ -30,7 +30,7 @@ defmodule Web.Resolvers.UserResolver do
       Session.login(email, password)
     else
       # TODO: Need to parse the errors, because they have tuples: JSON won't like it.
-      {:error, reasons = []} -> {:error, "Lots of reasons"}
+      {:error, []} -> {:error, "Lots of reasons"}
       {:error, reason} -> {:error, reason}
     end
   end
