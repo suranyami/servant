@@ -6,12 +6,10 @@ defmodule Web.Application do
   alias Web.Endpoint
 
   def start(_type, _args) do
-    import Supervisor.Spec
-
     children = [
-      supervisor(Endpoint, []),
-      supervisor(Absinthe.Subscription, [Endpoint]),
-      {Phoenix.PubSub, [name: Web.PubSub, adapter: Phoenix.PubSub.PG2]}
+      Web.Endpoint,
+      {Phoenix.PubSub, name: Web.PubSub},
+      {Absinthe.Subscription, [Endpoint]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

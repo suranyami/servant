@@ -46,7 +46,7 @@ defmodule Web.Mixfile do
       {:gettext, "~> 0.18"},
       {:guardian, "~> 2.2"},
       {:jason, "~> 1.2"},
-      {:phoenix, "~> 1.6"},
+      {:phoenix, "~> 1.6.6"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.3", only: :dev},
       {:phoenix_pubsub, "~> 2.0"},
