@@ -10,14 +10,7 @@ defmodule Data.Application do
   use Application
 
   def start(_type, _args) do
-    import Supervisor.Spec, warn: false
-
-    Supervisor.start_link(
-      [
-        supervisor(Data.Repo, [])
-      ],
-      strategy: :one_for_one,
-      name: Data.Supervisor
-    )
+    children = [Data.Repo]
+    Supervisor.start_link(children, strategy: :one_for_one, name: Data.Supervisor)
   end
 end

@@ -4,7 +4,6 @@ defmodule Data.User do
   """
   use Ecto.Schema
   import Ecto.Changeset
-  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   schema "users" do
     field(:email, :string)
@@ -33,7 +32,7 @@ defmodule Data.User do
   end
 
   defp put_password_hash(%Ecto.Changeset{valid?: true, changes: %{password: pass}} = changeset) do
-    put_change(changeset, :encrypted_password, hashpwsalt(pass))
+    put_change(changeset, :encrypted_password, Bcrypt.hash_pwd_salt(pass))
   end
 
   defp put_password_hash(changeset), do: changeset
