@@ -1,4 +1,12 @@
-use Mix.Config
+import Config
+
+config :data, Data.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "servant_dev",
+  hostname: "localhost",
+  pool_size: 10
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
