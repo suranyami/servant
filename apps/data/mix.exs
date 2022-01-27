@@ -1,15 +1,18 @@
 defmodule Data.Mixfile do
+  @moduledoc """
+  Data model and database operations.
+  """
   use Mix.Project
 
   def project do
     [
       app: :data,
-      version: "0.0.1",
+      version: "0.0.2",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
       lockfile: "../../mix.lock",
-      elixir: "~> 1.7",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -39,12 +42,14 @@ defmodule Data.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:ecto, "~> 3.0"},
-      {:ecto_sql, "~> 3.0"},
-      {:faker, "~> 0.11"},
-      {:phoenix_ecto, "~> 4.0"},
-      {:postgrex, "~> 0.14"},
-      {:scrivener_ecto, "~> 2.0"}
+      {:bcrypt_elixir, "~> 2.3"},
+      {:comeonin, "~> 5.3"},
+      {:ecto, "~> 3.7"},
+      {:ecto_sql, "~> 3.7"},
+      {:faker, "~> 0.16"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:postgrex, "~> 0.15"},
+      {:scrivener_ecto, "~> 2.7"}
     ]
   end
 

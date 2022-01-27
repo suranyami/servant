@@ -14,10 +14,7 @@ config :web, Web.Endpoint,
   url: [host: "localhost"],
   secret_key_base: System.get_env("SECRET_KEY"),
   render_errors: [view: Web.ErrorView, accepts: ~w(html json)],
-  pubsub: [
-    name: Web.PubSub,
-    adapter: Phoenix.PubSub.PG2
-  ]
+  pubsub_server: Web.PubSub
 
 config :web, Web.Guardian,
   issuer: "klub",

@@ -13,6 +13,7 @@ defmodule Data.Users do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
+    |> user_created()
   end
 
   def create(first_name, last_name, email, password) do
@@ -25,13 +26,21 @@ defmodule Data.Users do
     |> create()
   end
 
-  def get!(id) when is_integer(id) do
-    Repo.get!(User, id)
+  defp user_created({:ok, user}), do: {:ok, user}
+
+  defp user_created({:error, %Ecto.Changeset{errors: [email: {_, [constraint: :unique, constraint_name: _]}]}}) do
+    {:error, "Email not unique"}
   end
 
-  def get!(id) when is_binary(id) do
+  defp user_created({:error, %Ecto.Changeset{errors: errors}}), do: {:error, errors}
+
+  def get(id) when is_integer(id) do
+    Repo.get(User, id)
+  end
+
+  def get(id) when is_binary(id) do
     with {int_id, _} <- Integer.parse(id) do
-      get!(int_id)
+      get(int_id)
     else
       :error -> {:error, "id not an integer"}
     end

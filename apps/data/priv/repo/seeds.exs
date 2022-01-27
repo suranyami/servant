@@ -1,16 +1,4 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Data.Repo.insert!(%Data.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
-
-1..10
+1..1000
 |> Enum.each(fn _ ->
   email = Faker.Internet.email()
   first_name = Faker.Name.first_name()

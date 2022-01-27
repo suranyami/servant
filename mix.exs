@@ -5,7 +5,7 @@ defmodule Servant.MixProject do
     [
       apps_path: "apps",
       start_permanent: Mix.env() == :prod,
-      elixir: "~> 1.7",
+      elixir: "~> 1.12",
       build_embedded: Mix.env() in [:prod, :staging],
       start_permanent: Mix.env() in [:prod, :staging],
       aliases: aliases(),
@@ -20,7 +20,7 @@ defmodule Servant.MixProject do
   # Run "mix help deps" for examples and options.
   defp deps do
     [
-      {:credo, "~> 0.10", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 

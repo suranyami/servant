@@ -36,7 +36,7 @@ defmodule Web.UserController do
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
-    user = Users.get!(id)
+    user = Users.get(id)
 
     with {:ok, %User{} = user} <- Users.update(user, user_params) do
       render(conn, "show.json", user: user)
@@ -44,7 +44,7 @@ defmodule Web.UserController do
   end
 
   def delete(conn, %{"id" => id}) do
-    user = Users.get!(id)
+    user = Users.get(id)
 
     with {:ok, %User{}} <- Users.delete(user) do
       send_resp(conn, :no_content, "")

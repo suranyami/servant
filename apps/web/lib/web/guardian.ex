@@ -20,7 +20,7 @@ defmodule Web.Guardian do
   # end
 
   def resource_from_claims(%{"sub" => id}) do
-    resource = Users.get!(id)
+    resource = Users.get(id)
     {:ok, resource}
   end
 

@@ -2,6 +2,7 @@ defmodule Web.UserSocket do
   use Phoenix.Socket
 
   use Absinthe.Phoenix.Socket, schema: Web.Schema
+  alias Data.Users
 
   ## Channels
   # channel "room:*", Web.RoomChannel
@@ -17,9 +18,14 @@ defmodule Web.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
+  def connect(params, socket) do
+    user = current_user(params)
+    socket = Absinthe.Phoenix.Socket.put_options(socket, context: %{current_user: user})
     {:ok, socket}
   end
+
+  defp current_user(%{"user_id" => user_id}), do: Users.get(user_id)
+  defp current_user(_), do: nil
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #

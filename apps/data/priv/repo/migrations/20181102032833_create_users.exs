@@ -12,5 +12,6 @@ defmodule Data.Repo.Migrations.CreateUsers do
     end
 
     create(unique_index(:users, [:email]))
+    create(index(:users, [:first_name, :last_name]))
   end
 end
