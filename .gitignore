@@ -23,4 +23,5 @@ erl_crash.dump
 .DS_Store
 
 # Ignore direnv secrets
+.env
 .envrc
